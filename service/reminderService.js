@@ -8,7 +8,7 @@ var classificationUtils = require("../util/classificationUtils");
 module.exports = {
  
     remindSubscribers : function(date){
-        console.log("today's date: " + date.getDate() + "/" + date.getMonth());
+        console.log("today's date: " + date.getDate() + "/" + date.getMonth()+1);
         
         var events = eventDao.getEventsByDate(date);
         var subscribers = subscriberDao.getAllSubscribers();
@@ -19,9 +19,6 @@ module.exports = {
         for(var profile in classifiedEvents){
         	var requiredEvents = classifiedEvents[profile];
         	var requiredSubscribers = classifiedSubscribers[profile];
-        	console.log(profile);
-        	console.log(requiredEvents);
-        	console.log(requiredSubscribers);
         	for(var i=0; i<requiredSubscribers.length; i++){
         		notificationService.notifySubscriber(requiredSubscribers[i], requiredEvents);
         	}

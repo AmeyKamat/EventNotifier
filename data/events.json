@@ -1,10 +1,18 @@
 [
 	{
 		"id": 1,
-		"date": 8,
+		"date": 9,
 		"month": 4,
 		"name": "Testing of our own notification app",
 		"eventees": ["Amey Kamat"],
 		"profiles": ["home"]
+	},
+	{
+		"id": 2,
+		"date": 9,
+		"month": 4,
+		"name": "Testing again",
+		"eventees": ["Amey Kamat"],
+		"profiles": ["friends"]
 	}
 ]
