@@ -37,7 +37,7 @@ function notifyFutureEvents(subscriber){
             
     var futureDate = moment().add(priorReminderPeriod, "days");
     var futureEvents = eventDao.getEventsByDateAndProfiles(futureDate, profiles);
-    if(todaysEvents.length>0){
+    if(futureEvents.length>0){
         notificationService.notifySubscriberOfFutureEvents(subscriber, futureEvents);
     }
 }
