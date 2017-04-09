@@ -5,8 +5,13 @@ var config = require('../config/config');
 
 module.exports = {
  
-    notifySubscriber : function(subscriber, events){
-        var emailContent = templateService.generateEmailContent(subscriber, events);
+    notifySubscriberOfPresentEvents : function(subscriber, events){
+        var emailContent = templateService.generateEmailContent(subscriber, events, config.email.template.presentevents);
+        emailSender.sendEmail(subscriber.email, emailContent);
+    },
+
+    notifySubscriberOfFutureEvents : function(subscriber, events){
+        var emailContent = templateService.generateEmailContent(subscriber, events, config.email.template.futureevents);
         emailSender.sendEmail(subscriber.email, emailContent);
     }
 }

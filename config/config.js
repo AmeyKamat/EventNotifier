@@ -8,6 +8,10 @@ module.exports = {
 		api: {
 			domain: propertiesReader.get('email.api.domain'),
 			key: propertiesReader.get('email.api.key') 
+		},
+		template: {
+			presentevents: propertiesReader.get('email.template.presentevents'),
+			futureevents: propertiesReader.get('email.template.futureevents') 
 		}
 	}
 }

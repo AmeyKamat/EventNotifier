@@ -1,3 +1,6 @@
+var moment = require('moment');
+moment().format();
+
 var notificationService = require("./notificationService");
 
 var subscriberDao = require("../dao/subscriberDAO");
@@ -7,23 +10,30 @@ var classificationUtils = require("../util/classificationUtils");
 
 module.exports = {
  
-    remindSubscribers : function(date){
-        console.log("today's date: " + date.getDate() + "/" + date.getMonth()+1);
-        
-        var events = eventDao.getEventsByDate(date);
+    remindSubscribers : function(){
         var subscribers = subscriberDao.getAllSubscribers();
-
-        var classifiedEvents = classificationUtils.classifyEventsByProfile(events);
-        var classifiedSubscribers = classificationUtils.classifySubscribersByProfile(subscribers);
-        
-        for(var profile in classifiedEvents){
-        	var requiredEvents = classifiedEvents[profile];
-        	var requiredSubscribers = classifiedSubscribers[profile];
-        	for(var i=0; i<requiredSubscribers.length; i++){
-        		notificationService.notifySubscriber(requiredSubscribers[i], requiredEvents);
-        	}
+        for(var i=0; i<subscribers.length; i++){
+            notifyPresentEvents(subscribers[i]);
+            if(subscribers[i].priorReminderPeriod != undefined){
+                notifyFutureEvents(subscribers[i]);
+            }
         }
     }
+}
 
+function notifyPresentEvents(subscriber){
+    var today = moment();
+    console.log("today's date: " + today.date() + "/" + today.month());
+    var profiles = subscriber.profiles;
+    var todaysEvents = eventDao.getEventsByDateAndProfiles(today, profiles);
+    notificationService.notifySubscriberOfPresentEvents(subscriber, todaysEvents);
+}
 
+function notifyFutureEvents(subscriber){
+    var priorReminderPeriod = subscriber.priorReminderPeriod;
+    var profiles = subscriber.profiles;
+            
+    var futureDate = moment().add(priorReminderPeriod, "days");
+    var futureEvents = eventDao.getEventsByDateAndProfiles(futureDate, profiles);
+    notificationService.notifySubscriberOfFutureEvents(subscriber, futureEvents);
 }

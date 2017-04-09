@@ -3,10 +3,10 @@ var fs = require('fs');
 
 module.exports = {
  
-    generateEmailContent : function(subscriber, events){
+    generateEmailContent : function(subscriber, events, templateFile){
     	var context = buildContext(subscriber, events);
     	console.log(context);
-    	var content = fs.readFileSync("./templates/template.html", "utf8");
+    	var content = fs.readFileSync(templateFile, "utf8");
         var template = handlebars.compile(content);
         return template(context);
     }
