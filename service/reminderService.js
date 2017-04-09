@@ -26,7 +26,9 @@ function notifyPresentEvents(subscriber){
     console.log("today's date: " + today.date() + "/" + today.month());
     var profiles = subscriber.profiles;
     var todaysEvents = eventDao.getEventsByDateAndProfiles(today, profiles);
-    notificationService.notifySubscriberOfPresentEvents(subscriber, todaysEvents);
+    if(todaysEvents.length>0){
+        notificationService.notifySubscriberOfPresentEvents(subscriber, todaysEvents);
+    }
 }
 
 function notifyFutureEvents(subscriber){
@@ -35,5 +37,7 @@ function notifyFutureEvents(subscriber){
             
     var futureDate = moment().add(priorReminderPeriod, "days");
     var futureEvents = eventDao.getEventsByDateAndProfiles(futureDate, profiles);
-    notificationService.notifySubscriberOfFutureEvents(subscriber, futureEvents);
+    if(todaysEvents.length>0){
+        notificationService.notifySubscriberOfFutureEvents(subscriber, futureEvents);
+    }
 }
