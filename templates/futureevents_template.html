@@ -7,9 +7,12 @@
 			{{#each events as |event|}}
 				<li>
 					{{#with event}}
-						On <i>{{event.date}}/{{event.month}}</i>
-						<b>{{event.name}}</b>:
-						{{{list event.eventees}}}
+						On <i>{{event.date}}/{{event.month}}</i>&nbsp;
+						<b>
+							{{#if event.year}}{{{ordinal event.yearsPassed}}}{{/if}} {{event.name}}
+						</b>
+
+						:{{{list event.eventees}}}
 					{{/with}}
 				</li>
 			{{/each}}

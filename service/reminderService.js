@@ -2,9 +2,9 @@ var moment = require('moment');
 moment().format();
 
 var notificationService = require("./notificationService");
+var eventService = require("./eventService");
 
 var subscriberDao = require("../dao/subscriberDAO");
-var eventDao = require("../dao/eventDAO");
 
 var classificationUtils = require("../util/classificationUtils");
 
@@ -25,7 +25,7 @@ function notifyPresentEvents(subscriber){
     var today = moment();
     console.log("today's date: " + today.date() + "/" + today.month());
     var profiles = subscriber.profiles;
-    var todaysEvents = eventDao.getEventsByDateAndProfiles(today, profiles);
+    var todaysEvents = eventService.getEventsByDateAndProfiles(today, profiles);
     if(todaysEvents.length>0){
         notificationService.notifySubscriberOfPresentEvents(subscriber, todaysEvents);
     }
@@ -36,7 +36,7 @@ function notifyFutureEvents(subscriber){
     var profiles = subscriber.profiles;
             
     var futureDate = moment().add(priorReminderPeriod, "days");
-    var futureEvents = eventDao.getEventsByDateAndProfiles(futureDate, profiles);
+    var futureEvents = eventService.getEventsByDateAndProfiles(futureDate, profiles);
     if(futureEvents.length>0){
         notificationService.notifySubscriberOfFutureEvents(subscriber, futureEvents);
     }

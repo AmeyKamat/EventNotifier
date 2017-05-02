@@ -4,19 +4,7 @@ var content = fs.readFileSync("./data/events.json");
 var events = JSON.parse(content);
 
 module.exports = {
- 
-    getEventsByDate : function(date){
- 		var selectedEvents = [];
- 		for(var i=0; i<events.length;i++){
- 			if(date.getDate() == events[i].date && date.getMonth()+1 == events[i].month){
- 				selectedEvents.push(events[i]);
- 			}
- 		}
-
- 		return selectedEvents;
-    },
-
-    getEventsByDateAndProfiles : function(date, profiles){
+ 	getEventsByDateAndProfiles : function(date, profiles){
  		var selectedEvents = [];
  		for(var i=0; i<events.length;i++){
  			if(date.date() == events[i].date 

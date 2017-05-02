@@ -1,6 +1,10 @@
 var handlebars = require('handlebars');
 var fs = require('fs');
 
+var templateHelpers = require("../util/templateHelpers")
+templateHelpers.registerListBuilder(handlebars);
+templateHelpers.registerOrdinalBuilder(handlebars);
+
 module.exports = {
  
     generateEmailContent : function(subscriber, events, templateFile){
@@ -18,23 +22,3 @@ function buildContext(subscriber, events){
 	context.subscriber = subscriber;
 	return context;
 }
-
-handlebars.registerHelper('list', function(array) {
-	var list = "";
-	if(array.length == 1){
-		list = handlebars.escapeExpression(array[0]);
-	}
-	else{
-		list = handlebars.escapeExpression(array[array.length-1]);
-		list = " & " + list;
-
-		for(var i=array.length-2; i>=1; i--){
-			list = handlebars.escapeExpression(array[i]) + list;
-			list = ", " + list;
-		}
-
-		list = handlebars.escapeExpression(array[0]) + list;
-	}
-	
-  	return new handlebars.SafeString(list);
-});
