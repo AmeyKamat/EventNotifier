@@ -1,7 +1,10 @@
 var fs = require("fs");
 
-var content = fs.readFileSync("./data/subscribers.json");
-var subscribers = JSON.parse(content);
+var pathUtils = require('../util/pathUtils');
+var config = require('../util/configFactory');
+
+var data = fs.readFileSync(pathUtils.getAbsoluteDataPath(config.data.file.subscribers));
+var subscribers = JSON.parse(data);
 
 module.exports = {
  

@@ -1,4 +1,7 @@
 var handlebars = require('handlebars');
+var moment = require('moment');
+moment().format();
+
 
 module.exports = {
  
@@ -8,6 +11,10 @@ module.exports = {
 
     registerOrdinalBuilder: function(handlebarsRef){
         handlebarsRef.registerHelper('ordinal', buildOrdinal);
+    },
+
+    registerYearsSinceCalculator: function(handlebarsRef){
+        handlebarsRef.registerHelper('years_since', calculateYearsSince);
     }
 }
 
@@ -44,6 +51,13 @@ function buildOrdinal(number) {
     }
 
     var ordinal = handlebars.escapeExpression(number.toString()) + suffix;
-    console.log(ordinal);
     return new handlebars.SafeString(ordinal);
+}
+
+function calculateYearsSince(pastYear) {
+    var today = moment();
+    if(today.year() >= pastYear){
+        return today.year() - pastYear
+    }
+    return null;
 }

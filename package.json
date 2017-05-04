@@ -1,8 +1,29 @@
 {
-  "name": "event-memoriser",
-  "version": "1.0.0",
+  "name": "event-notifier",
+  "version": "2.0.0",
   "description": "Reminds of events through notification",
+  "keywords": [
+    "events",
+    "reminders"
+  ],
+  "homepage": "https://github.com/AmeyKamat/EventNotifier",
+  "bugs": {
+      "url" : "https://github.com/AmeyKamat/EventNotifier/issues", 
+      "email" : "eventnotifier@ameykamat.in"
+    }
+  },
+  "author": { 
+    "name" : "Amey Kamat",
+    "email" : "amey@AmeyKamat.in",
+    "url" : "http://www.ameykamat.in"
+  },
+  "license": "BSD-2-Clause",
   "main": "index.js",
+  "repository" :
+  { 
+    "type" : "git",
+    "url" : "https://github.com/AmeyKamat/EventNotifier.git"
+  }
   "dependencies": {
     "nodemailer": "4.0.0",
     "handlebars": "4.0.5",
@@ -13,11 +34,11 @@
   "devDependencies": {
     "nodemailer": "4.0.0",
     "handlebars": "4.0.5"  
+  }, 
+  "engines": { 
+    "node": "=6.10.2" 
   },
-  "keywords": [
-    "events",
-    "reminders"
-  ],
-  "author": "Amey Kamat",
-  "license": "BSD-2-Clause"
+  "os": [
+    "linux"
+  ]
 }

@@ -3,15 +3,14 @@ moment().format();
 
 var notificationService = require("./notificationService");
 var eventService = require("./eventService");
-
-var subscriberDao = require("../dao/subscriberDAO");
+var subscriberService = require("./subscriberService");
 
 var classificationUtils = require("../util/classificationUtils");
 
 module.exports = {
  
     remindSubscribers : function(){
-        var subscribers = subscriberDao.getAllSubscribers();
+        var subscribers = subscriberService.getAllSubscribers();
         for(var i=0; i<subscribers.length; i++){
             notifyPresentEvents(subscribers[i]);
             if(subscribers[i].priorReminderPeriod != undefined){

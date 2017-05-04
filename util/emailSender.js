@@ -1,23 +1,24 @@
 var nodemailer = require('nodemailer');
-var config = require('../config/config');
+var config = require('./configFactory');
 var mailgun = require('nodemailer-mailgun-transport');
 
 var authentication = {
     auth: {
-        api_key: config.email.api.key,
-        domain: config.email.api.domain
+        api_key: config.vendor.mailgun.apikey,
+        domain: config.vendor.mailgun.domain
     }
 };
+
 var transporter = nodemailer.createTransport(mailgun(authentication));
 
 module.exports = {
  
-    sendEmail : function(toAddress, content){
+    sendEmail : function(toAddress, toSubject, content){
 
 		var mailOptions = {
-    		from: config.email.fromAddress,
+    		from: config.mail.from.address,
     		to: toAddress,
-    		subject: config.email.subject,
+    		subject: toSubject,
     		html: content
 		};
 

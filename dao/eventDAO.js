@@ -1,7 +1,10 @@
 var fs = require("fs");
 
-var content = fs.readFileSync("./data/events.json");
-var events = JSON.parse(content);
+var pathUtils = require('../util/pathUtils');
+var config = require('../util/configFactory');
+
+var data = fs.readFileSync(pathUtils.getAbsoluteDataPath(config.data.file.events));
+var events = JSON.parse(data);
 
 module.exports = {
  	getEventsByDateAndProfiles : function(date, profiles){
