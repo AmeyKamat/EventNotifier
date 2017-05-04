@@ -2,7 +2,7 @@
 Notifies events with prior and same-day reminders to the subscribers.
 
 ## How Does It Work?
-Event Notifier picks events from data files and sends mails to the subscribers on the data files using highly customizable html templates.
+Event Notifier picks events from data files and sends mails to the subscribers on the data files using highly customizable html templates. Reminders can also be sent in advance.
 It uses Mailgun API to send mails and handlebars as a template engine.
 
 ## System Requirements
@@ -131,7 +131,7 @@ The attributes shown in the sample data is descibed below:
 |name                |Name of the subscriber                                                                                 |Yes      |
 |email               |Email id of the subscriber                                                                             |Yes      |
 |profiles            |Profile of the subscriber. Only those events are notified to the subscribers that match their profiles |Yes      |
-|priorReminderPeriod |Number of days in advance the event should be notified to the subscriber                               |No       |
+|priorReminderPeriod |Number of days in advance the future event should be notified to the subscriber                        |No       |
 
 #### Notes:
 1. Those non mandatory fields which are not set in data file are not accessible in templates.
@@ -180,3 +180,5 @@ Author: Amey Kamat
 Email: [amey@ameykamat.in](mailto:amey@ameykamat.in)
 
 Website: [wwww.ameykamat.in](http://www.ameykamat.in)
+
+Github: [AmeyKamat](https://github.com/AmeyKamat)
