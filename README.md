@@ -17,7 +17,7 @@ It uses Mailgun API to send mails and handlebars as a template engine.
 5. Add data files at required location. (See [Data Files](#data-files))
 6. Add Customized Email Templates at required location. (See [Customizing Templates](#customizing-templates))
 7. Do ```cd {project_root}```.
-8. Run ```node index.js``` or use cron job to automate the execution of app periodically. (See [Scripting and Automation](Scripting-and-Automation))
+8. Run ```node index.js``` or use cron job to automate the execution of app periodically. (See [Scripting and Automation](scripting-and-automation))
 
 ## Configuration
 Event Notifier is designed to be highly configurable. The app follows two levels of configurations. 
@@ -169,10 +169,10 @@ To run this app periodically,
 1. Run command ```crontab -e``` on bash console.
 2. Append the file with ```00 00 * * * chmod 777 {path_to_eventNotifier.sh}/eventNotifier.sh; {path_to_eventNotifier.sh}/eventNotifier.sh```
 3. Press ```Ctrl``` + ```X```
-This line indicates that at 00:00 midnight, eventNotifier.sh has to be set as executable and the executed.
+This line indicates that at 00:00 midnight, eventNotifier.sh has to be set as executable and then executed.
 
 ## Licence
-The Software is released under [GNU Lesser General Public License v3.0](LICENSE),
+The Software is released under [GNU Lesser General Public License v3.0](LICENSE).
 
 ## Contact
 Author: Amey Kamat
