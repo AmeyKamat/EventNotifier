@@ -172,7 +172,7 @@ To run this app periodically,
 This line indicates that at 00:00 midnight, eventNotifier.sh has to be set as executable and the executed.
 
 ## Licence
-The Software is released under (GNU Lesser General Public License v3.0)[LICENSE],
+The Software is released under [GNU Lesser General Public License v3.0](LICENSE),
 
 ## Contact
 Author: Amey Kamat
